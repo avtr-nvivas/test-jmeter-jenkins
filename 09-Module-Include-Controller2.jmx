@@ -25,9 +25,9 @@
       <hashTree>
         <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Bloque 1 Perfil Profesor 1"/>
         <hashTree>
-          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="01-typicode.com/posts/1"/>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="01-typicode.com/posts/1" enabled="false"/>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="01-typicode.com/posts/1">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="01-typicode.com/posts/1" enabled="true">
               <stringProp name="TestPlan.comments">https://jsonplaceholder.typicode.com/posts</stringProp>
               <stringProp name="HTTPSampler.domain">jsonplaceholder.typicode.com</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
@@ -60,7 +60,7 @@
               <hashTree/>
             </hashTree>
           </hashTree>
-          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="02-typicode.com/posts/2"/>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="02-typicode.com/posts/2" enabled="false"/>
           <hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="02-typicode.com/posts/2" enabled="true">
               <stringProp name="TestPlan.comments">https://jsonplaceholder.typicode.com/posts</stringProp>
@@ -105,7 +105,7 @@
               <hashTree/>
             </hashTree>
           </hashTree>
-          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="03-typicode.com/posts/3" enabled="true"/>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="03-typicode.com/posts/3" enabled="false"/>
           <hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="03-typicode.com/posts/3" enabled="true">
               <stringProp name="TestPlan.comments">https://jsonplaceholder.typicode.com/posts</stringProp>
@@ -150,7 +150,7 @@
               <hashTree/>
             </hashTree>
           </hashTree>
-          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="04-typicode.com/posts/4"/>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="04-typicode.com/posts/4" enabled="false"/>
           <hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="04-typicode.com/posts/4" enabled="true">
               <stringProp name="TestPlan.comments">https://jsonplaceholder.typicode.com/posts</stringProp>
@@ -195,9 +195,9 @@
               <hashTree/>
             </hashTree>
           </hashTree>
-          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="05-typicode.com/posts"/>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="05-typicode.com/posts" enabled="false"/>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="05-typicode.com/posts">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="05-typicode.com/posts" enabled="true">
               <stringProp name="TestPlan.comments">https://jsonplaceholder.typicode.com/posts</stringProp>
               <stringProp name="HTTPSampler.domain">jsonplaceholder.typicode.com</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
@@ -239,6 +239,32 @@
               </JSONPostProcessor>
               <hashTree/>
             </hashTree>
+          </hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="JSR223 Sampler"/>
+          <hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">// Mensaje que quieres mostrar
+def msg = &quot;Hola desde JSR223 con Groovy. Threads=${vars.get(&apos;THREADS&apos;)}&quot;
+
+// 1) Log a jmeter.log (y al panel de logs en la GUI)
+log.info(msg)
+
+// 2) Mostrarlo en el Response Message de la muestra
+prev.setResponseMessage(msg)
+
+// 3) Mostrarlo también en el Response Data (pestaña Response Data del View Results Tree)
+prev.setResponseData(msg, &quot;UTF-8&quot;)
+
+// 4) Opcional: marcar el sample como OK
+prev.setResponseCode(&quot;200&quot;)
+prev.setSuccessful(true)
+</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223Sampler>
+            <hashTree/>
           </hashTree>
         </hashTree>
         <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="false">
